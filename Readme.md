@@ -25,29 +25,52 @@ This Streamlit application provides a comprehensive dashboard to monitor and ana
 
 ## ⚙️ Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+### Streamlit in Snowflake (SiS) - Recommended
+
+This application is designed to run natively in Snowflake using Streamlit in Snowflake (SiS):
+
+1.  **Create a new Streamlit app in Snowflake:**
+    ```sql
+    CREATE STREAMLIT llm_usage_analytics
+    ROOT_LOCATION = '@<your_stage>/streamlit_app'
+    MAIN_FILE = '/streamlit_app.py'
+    QUERY_WAREHOUSE = '<your_warehouse>';
     ```
 
-2.  **Create a virtual environment (recommended):**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+2.  **Upload the application file:**
+    - Use the Snowflake web interface to upload `streamlit_app.py` to your designated stage
+    - Or use SnowSQL to put the file:
+    ```sql
+    PUT file://streamlit_app.py @<your_stage>/streamlit_app/;
     ```
 
-3.  **Install the required dependencies:**
-    Create a `requirements.txt` file with the following content:
+3.  **Grant necessary permissions:**
+    Ensure your role has access to the `SNOWFLAKE.ACCOUNT_USAGE` schema:
+    ```sql
+    GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE TO ROLE <your_role>;
     ```
-    streamlit
-    pandas
-    snowflake-snowpark-python
-    plotly
+
+4.  **Launch the application:**
+    Navigate to the Streamlit app in the Snowflake web interface or use:
+    ```sql
+    SHOW STREAMLITS;
     ```
-    Then, install the packages:
+
+### Local Development (Optional)
+
+For local development and testing:
+
+1.  **Install dependencies:**
     ```bash
-    pip install -r requirements.txt
+    pip install streamlit pandas snowflake-snowpark-python plotly
+    ```
+
+2.  **Configure Snowflake connection:**
+    Set up your connection parameters in a `connection.json` file or environment variables.
+
+3.  **Run locally:**
+    ```bash
+    streamlit run streamlit_app.py
     ```
 
 ## 🚀 Usage
