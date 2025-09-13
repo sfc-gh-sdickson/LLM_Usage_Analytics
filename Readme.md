@@ -1,6 +1,10 @@
 <img src="Snowflake_Logo.svg" width="200">
 # Snowflake LLM Usage Analytics Dashboard
 
+## ❄️ Updates
+
+*   **Snowflake Github Updates:** I added my standard Snowflake logos in the Snowflake Streamlit editor and then pushed it to Github.  Snowflake create a directory for the new files: VRBHFB_PGUFIBUKK
+
 This Streamlit application provides a comprehensive dashboard to monitor and analyze the usage and costs associated with Snowflake's Cortex AI Services. It offers detailed visualizations and insights into your organization's LLM consumption, helping you optimize costs and understand usage patterns.
 
 ## ❄️ Features
